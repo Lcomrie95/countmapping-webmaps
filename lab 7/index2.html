@@ -42,6 +42,7 @@ index.html
   	<div class="map-overlay-inner">
   	<h2>Public and Affordable Housing Flood Risk</h2>
     <!-- INSERT TEXT HERE -->
+    In this map, we are looking at the distribution of housing developments in the city of New York and their proximity to flood zones. Data was collected from the NYCHA and the NYU Furman Center.
   	</div>
   	</div>
 
@@ -51,26 +52,6 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibGNvbXJpZTk1IiwiYSI6ImNsOTI0ZXhpNTB0ZDkzdWwxb
 const map = new mapboxgl.Map({
   container: 'map', // container id
   style: 'mapbox://styles/lcomrie95/cl932cix9002r15pelgp1nrx8' // replace this 
-});
-
-
-map.on('load',function(){
-  // Give your layer's source a nickname you'll remember easily. I've called my source `sandy_layer`.
-  map.addSource('nyc_layer',{
-    'type':'vector',
-    'url': 'mapbox://lcomrie95.63rhckro'
-  });
-  // add a new layer with your polygons
-  map.addLayer({
-    'id':'flood_zones',
-    'type':'fill',
-    'source':'sandy_layer',
-    'source-layer':'Map_of_NYCHA_Developments-6qp2qw',
-    'paint':{
-      'fill-color':'#00158f',
-      'fill-opacity': 0.5
-    }
-  })
 });
 
 map.on('load',function(){
@@ -91,6 +72,27 @@ map.on('load',function(){
     }
   })
 });
+
+map.on('load',function(){
+  // Give your layer's source a nickname you'll remember easily. I've called my source `sandy_layer`.
+  map.addSource('nyc_layer',{
+    'type':'vector',
+    'url': 'mapbox://lcomrie95.63rhckro'
+  });
+  // add a new layer with your polygons
+  map.addLayer({
+    'id':'housing',
+    'type':'fill',
+    'source':'nyc_layer',
+    'source-layer':'Map_of_NYCHA_Developments-6qp2qw',
+    'paint':{
+      'fill-color':'#A52A2A',
+      'fill-opacity': 0.5
+    }
+  })
+});
+
+
 
 // Within a script, you comment using two backslashes.
 </script>
